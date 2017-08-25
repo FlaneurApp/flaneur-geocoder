@@ -1,5 +1,9 @@
 # flaneur-geocoder
 
+[![Build Status](https://travis-ci.org/FlaneurApp/flaneur-geocoder.svg?branch=master)](https://travis-ci.org/FlaneurApp/flaneur-geocoder)
+![Dependencycy status](https://img.shields.io/david/FlaneurApp/flaneur-geocoder.svg?style=flat-square)
+[![npm version](https://img.shields.io/npm/v/flaneur-geocoder.svg?style=flat-square)](https://www.npmjs.com/package/node-geocoder)
+
 ## Introduction
 
 This module intends to help developers using Google Maps and Google Places API
