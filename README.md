@@ -17,7 +17,7 @@ All results are returned in English when available.
 
 ## Usage
 
-```
+```javascript
     const FlaneurGeocoder = require('flaneur-geocoder')
     const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
     geocoder.findWhereIs(48.8381, 2.2805)
@@ -28,7 +28,7 @@ All results are returned in English when available.
 
 Will ouput:
 
-```
+```json
     {
       locality: 'Paris',
       administrative_area_level_2: 'Paris',
