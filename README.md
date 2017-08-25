@@ -18,26 +18,26 @@ All results are returned in English when available.
 ## Usage
 
 ```javascript
-    const FlaneurGeocoder = require('flaneur-geocoder')
-    const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
-    geocoder.findWhereIs(48.8381, 2.2805)
-    .then((result) => {
-      console.log(result)
-    })
+const FlaneurGeocoder = require('flaneur-geocoder')
+const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
+geocoder.findWhereIs(48.8381, 2.2805)
+.then((result) => {
+    console.log(result)
+})
 ```
 
 Will ouput:
 
-```json
-    {
-      locality: 'Paris',
-      administrative_area_level_2: 'Paris',
-      administrative_area_level_1: 'Île-de-France',
-      country: 'France',
-      neighborhood: 'Javel',
-      sublocality: '15th arrondissement of Paris',
-      sublocality_level_1: '15th arrondissement of Paris'
-    }
+```
+{
+  locality: 'Paris',
+  administrative_area_level_2: 'Paris',
+  administrative_area_level_1: 'Île-de-France',
+  country: 'France',
+  neighborhood: 'Javel',
+  sublocality: '15th arrondissement of Paris',
+  sublocality_level_1: '15th arrondissement of Paris'
+}
 ```
 
 ## Tests
