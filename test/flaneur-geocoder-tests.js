@@ -33,5 +33,17 @@ describe('FlaneurGeocoder', function() {
       })
       .should.notify(done)
     })
+
+    it('should return a valid response with a Google Place ID', function(done) {
+      const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
+      geocoder.findWhereIs('ChIJjaFImcB65kcRXCzvbEBQJN0')
+      .then((result) => {
+        result.locality.should.eq('Paris')
+        result.administrative_area_level_2.should.eq('Paris')
+        result.administrative_area_level_1.should.eq('Île-de-France')
+        result.country.should.eq('France')
+      })
+      .should.notify(done)
+    })
   })
 })
