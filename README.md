@@ -17,16 +17,19 @@ All results are returned in English when available.
 
 ## Usage
 
-    const FlaneurGeocoder = require('flaneur-geocoder')
+```
+    const FlaneurGeocoder = require('flaneur-geocoder')
     const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
     geocoder.findWhereIs(48.8381, 2.2805)
     .then((result) => {
       console.log(result)
-    })
+    })
+```
 
 Will ouput:
 
-    {
+```
+    {
       locality: 'Paris',
       administrative_area_level_2: 'Paris',
       administrative_area_level_1: 'Île-de-France',
@@ -34,7 +37,8 @@ Will ouput:
       neighborhood: 'Javel',
       sublocality: '15th arrondissement of Paris',
       sublocality_level_1: '15th arrondissement of Paris'
-    }
+    }
+```
 
 ## Tests
 
