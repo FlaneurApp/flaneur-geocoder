@@ -4,7 +4,8 @@
   "description": "Node geocoder, relying on coordinate and Google Places ID to fetch where a location is, via Google Maps",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --check-leaks"
+    "test": "mocha --check-leaks",
+    "ci": "npm run test"
   },
   "repository": {
     "type": "git",
