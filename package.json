@@ -1,0 +1,25 @@
+{
+  "name": "flaneur-geocoder",
+  "version": "1.0.0",
+  "description": "Node geocoder, relying on coordinate and Google Places ID to fetch where a location is, via Google Maps",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --check-leaks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flaneur/flaneur-geocoder.git"
+  },
+  "keywords": [
+    "geocoder",
+    "geocoding",
+    "geo",
+    "google",
+    "maps",
+  ],
+  "author": "Flâneur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Flaneur/flaneur-geocoder/issues"
+  }
+}
