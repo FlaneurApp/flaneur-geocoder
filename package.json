@@ -7,6 +7,10 @@
     "test": "mocha --check-leaks",
     "ci": "npm run test"
   },
+  "bin": {
+    "flaneur-geocoder": "./bin/cli-find-where-is.js",
+    "flaneur-geocoder-photo": "./bin/cli-get-photo-reference.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/FlaneurApp/flaneur-geocoder.git"
