@@ -1,0 +1,34 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "flaneur-geocoder\n\n\n\n\n\n\n\n\nIntroduction\n\n\nThis module intends to help developers using Google Maps and Google Places API\nto get consitent and complete geocoding returns.\n\n\nIt merges \npolitical\n types address components fetched from the service from\neither coordinate or a Google Place ID. When a conflict occurs, a very basic\npolicy is applied: the shortest name is returned.\n\n\nAll results are returned in English when available.\n\n\nUsage\n\n\nconst FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =\n {\n    console.log(result)\n})\n\n\n\n\nWill ouput:\n\n\n{\n  locality: 'Paris',\n  administrative_area_level_2: 'Paris',\n  administrative_area_level_1: '\u00cele-de-France',\n  country: 'France',\n  neighborhood: 'Javel',\n  sublocality: '15th arrondissement of Paris',\n  sublocality_level_1: '15th arrondissement of Paris'\n}\n\n\n\n\nTests\n\n\nAs for regular usage, tests require a Google Places API Key. To run tests locally,\nplease setup a \nGOOGLE_PLACES_FLANEUR_API_KEY\n environment variable with your API key.\n\n\nCI\n\n\nThis project is using Travis. As such, maintainers should pay attention to provide\nthe API key set up with Travis machines IP addresses.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#flaneur-geocoder", 
+            "text": "", 
+            "title": "flaneur-geocoder"
+        }, 
+        {
+            "location": "/#introduction", 
+            "text": "This module intends to help developers using Google Maps and Google Places API\nto get consitent and complete geocoding returns.  It merges  political  types address components fetched from the service from\neither coordinate or a Google Place ID. When a conflict occurs, a very basic\npolicy is applied: the shortest name is returned.  All results are returned in English when available.", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#usage", 
+            "text": "const FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =  {\n    console.log(result)\n})  Will ouput:  {\n  locality: 'Paris',\n  administrative_area_level_2: 'Paris',\n  administrative_area_level_1: '\u00cele-de-France',\n  country: 'France',\n  neighborhood: 'Javel',\n  sublocality: '15th arrondissement of Paris',\n  sublocality_level_1: '15th arrondissement of Paris'\n}", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/#tests", 
+            "text": "As for regular usage, tests require a Google Places API Key. To run tests locally,\nplease setup a  GOOGLE_PLACES_FLANEUR_API_KEY  environment variable with your API key.", 
+            "title": "Tests"
+        }, 
+        {
+            "location": "/#ci", 
+            "text": "This project is using Travis. As such, maintainers should pay attention to provide\nthe API key set up with Travis machines IP addresses.", 
+            "title": "CI"
+        }
+    ]
+}

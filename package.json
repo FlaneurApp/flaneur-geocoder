@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --check-leaks",
-    "ci": "npm run test"
+    "ci": "npm run test",
+    "lint": "./node_modules/.bin/eslint --fix --config .eslintrc.json index.js lib/*.js",
+    "doc": "mkdocs build"
   },
   "bin": {
     "flaneur-geocoder": "./bin/cli-find-where-is.js",
@@ -30,6 +32,9 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0",
     "mocha": "^3.5.0"
   },
   "dependencies": {
