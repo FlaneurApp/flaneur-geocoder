@@ -14,13 +14,11 @@ describe('FlaneurGeocoder', function() {
       const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
       geocoder.findWhereIs(48.8381, 2.2805)
       .then((result) => {
-        result.locality.should.eq('Paris')
-        result.administrative_area_level_2.should.eq('Paris')
-        result.administrative_area_level_1.should.eq('Île-de-France')
-        result.country.should.eq('France')
-        result.neighborhood.should.eq('Javel')
-        result.sublocality.should.eq('15th arrondissement of Paris')
-        result.sublocality_level_1.should.eq('15th arrondissement of Paris')
+        const components = result.enPoliticalComponents
+        components.locality.should.eq('Paris')
+        components.administrative_area_level_2.should.eq('Paris')
+        components.administrative_area_level_1.should.eq('Île-de-France')
+        components.country.should.eq('France')
       })
       .should.notify(done)
     })
@@ -29,7 +27,7 @@ describe('FlaneurGeocoder', function() {
       const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
       geocoder.findWhereIs(41.3772, 2.1502)
       .then((result) => {
-        result.locality.should.eq('Barcelona')
+        result.enPoliticalComponents.locality.should.eq('Barcelona')
       })
       .should.notify(done)
     })
