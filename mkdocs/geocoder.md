@@ -18,6 +18,7 @@ Two inputs are accepted:
 | `enPolicitalComponents` | A summary of the `political` address components |
 | `name` | The name of the location |
 | `location` | The coordonate of the location |
+| `placeID` | The GooglePlace ID of the location |
 | `viewport` | The recommended viewport for the location |
 | `searchSettings` | Recommended values for searching around the location |
 | `searchSettings.coordinate` | The coordonate around which you should search |
