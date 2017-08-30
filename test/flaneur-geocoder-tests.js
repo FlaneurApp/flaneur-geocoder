@@ -14,11 +14,10 @@ describe('FlaneurGeocoder', function() {
       const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
       geocoder.findWhereIs(48.8381, 2.2805)
       .then((result) => {
-        const components = result.enPoliticalComponents
-        components.locality.should.eq('Paris')
-        components.administrative_area_level_2.should.eq('Paris')
-        components.administrative_area_level_1.should.eq('Île-de-France')
-        components.country.should.eq('France')
+        result.enPoliticalComponents.locality.should.eq('Paris')
+        result.enPoliticalComponents.administrative_area_level_2.should.eq('Paris')
+        result.enPoliticalComponents.administrative_area_level_1.should.eq('Île-de-France')
+        result.enPoliticalComponents.country.should.eq('France')
       })
       .should.notify(done)
     })
