@@ -1,2 +1,5 @@
 site_name: Flâneur Geocoder
+docs_dir: mkdocs
+site_dir: docs
 theme: readthedocs
+strict: true
