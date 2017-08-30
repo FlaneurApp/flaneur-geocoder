@@ -27,7 +27,7 @@ const seattleCoord =   { latitude: 47.6062095,  longitude: -122.3320708 }
 const brestTourDuMonde = 'ChIJo7G3fCC6FkgROZBxeqhK1T0'
 
 const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY, true)
-geocoder.findWhereIs(barcelonaCoord.latitude, barcelonaCoord.longitude)
+geocoder.findWhereIs(48.8381, 2.2805)
 .then((result) => {
   console.log(result)
 })

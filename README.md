@@ -7,13 +7,7 @@
 ## Introduction
 
 This module intends to help developers using Google Maps and Google Places API
-to get consitent and complete geocoding returns.
-
-It merges `political` types address components fetched from the service from
-either coordinate or a Google Place ID. When a conflict occurs, a very basic
-policy is applied: the shortest name is returned.
-
-All results are returned in English when available.
+to get consistent geocoding returns, with search-oriented information.
 
 ## Usage
 
@@ -29,15 +23,22 @@ geocoder.findWhereIs(48.8381, 2.2805)
 Will ouput:
 
 ```
-{
-  locality: 'Paris',
-  administrative_area_level_2: 'Paris',
-  administrative_area_level_1: 'Île-de-France',
-  country: 'France',
-  neighborhood: 'Javel',
-  sublocality: '15th arrondissement of Paris',
-  sublocality_level_1: '15th arrondissement of Paris'
-}
+{ types: [ 'locality', 'political' ],
+  enPoliticalComponents:
+   { locality: 'Paris',
+     administrative_area_level_2: 'Paris',
+     administrative_area_level_1: 'Île-de-France',
+     country: 'France' },
+  name: 'Paris',
+  location: { lat: 48.856614, lng: 2.3522219 },
+  viewport:
+   { northeast: { lat: 48.9021449, lng: 2.4699208 },
+     southwest: { lat: 48.815573, lng: 2.224199 } },
+  searchSettings:
+   { coordinate: { lat: 48.856614, lng: 2.3522219 },
+     tag: null,
+     aroundPrecision: 5097.866542628929,
+     aroundRadius: 40782.93234103143 } }
 ```
 
 ## Tests
