@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "flaneur-geocoder\n\n\n\n\n\n\n\n\nIntroduction\n\n\nThis module intends to help developers using Google Maps and Google Places API\nto get consitent and complete geocoding returns.\n\n\nIt merges \npolitical\n types address components fetched from the service from\neither coordinate or a Google Place ID. When a conflict occurs, a very basic\npolicy is applied: the shortest name is returned.\n\n\nAll results are returned in English when available.\n\n\nUsage\n\n\nconst FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =\n {\n    console.log(result)\n})\n\n\n\n\nWill ouput:\n\n\n{\n  locality: 'Paris',\n  administrative_area_level_2: 'Paris',\n  administrative_area_level_1: '\u00cele-de-France',\n  country: 'France',\n  neighborhood: 'Javel',\n  sublocality: '15th arrondissement of Paris',\n  sublocality_level_1: '15th arrondissement of Paris'\n}\n\n\n\n\nTests\n\n\nAs for regular usage, tests require a Google Places API Key. To run tests locally,\nplease setup a \nGOOGLE_PLACES_FLANEUR_API_KEY\n environment variable with your API key.\n\n\nCI\n\n\nThis project is using Travis. As such, maintainers should pay attention to provide\nthe API key set up with Travis machines IP addresses.", 
+            "text": "flaneur-geocoder\n\n\n\n\n\n\n\n\nIntroduction\n\n\nThis module intends to help developers using Google Maps and Google Places API\nto get consistent geocoding returns, with search-oriented information.\n\n\nUsage\n\n\nconst FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =\n {\n    console.log(result)\n})\n\n\n\n\nWill ouput:\n\n\n{ types: [ 'locality', 'political' ],\n  enPoliticalComponents:\n   { locality: 'Paris',\n     administrative_area_level_2: 'Paris',\n     administrative_area_level_1: '\u00cele-de-France',\n     country: 'France' },\n  name: 'Paris',\n  location: { lat: 48.856614, lng: 2.3522219 },\n  viewport:\n   { northeast: { lat: 48.9021449, lng: 2.4699208 },\n     southwest: { lat: 48.815573, lng: 2.224199 } },\n  searchSettings:\n   { coordinate: { lat: 48.856614, lng: 2.3522219 },\n     tag: null,\n     aroundPrecision: 5097.866542628929,\n     aroundRadius: 40782.93234103143 } }\n\n\n\n\nTests\n\n\nAs for regular usage, tests require a Google Places API Key. To run tests locally,\nplease setup a \nGOOGLE_PLACES_FLANEUR_API_KEY\n environment variable with your API key.\n\n\nCI\n\n\nThis project is using Travis. As such, maintainers should pay attention to provide\nthe API key set up with Travis machines IP addresses.", 
             "title": "Home"
         }, 
         {
@@ -12,12 +12,12 @@
         }, 
         {
             "location": "/#introduction", 
-            "text": "This module intends to help developers using Google Maps and Google Places API\nto get consitent and complete geocoding returns.  It merges  political  types address components fetched from the service from\neither coordinate or a Google Place ID. When a conflict occurs, a very basic\npolicy is applied: the shortest name is returned.  All results are returned in English when available.", 
+            "text": "This module intends to help developers using Google Maps and Google Places API\nto get consistent geocoding returns, with search-oriented information.", 
             "title": "Introduction"
         }, 
         {
             "location": "/#usage", 
-            "text": "const FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =  {\n    console.log(result)\n})  Will ouput:  {\n  locality: 'Paris',\n  administrative_area_level_2: 'Paris',\n  administrative_area_level_1: '\u00cele-de-France',\n  country: 'France',\n  neighborhood: 'Javel',\n  sublocality: '15th arrondissement of Paris',\n  sublocality_level_1: '15th arrondissement of Paris'\n}", 
+            "text": "const FlaneurGeocoder = require('flaneur-geocoder')\nconst geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)\ngeocoder.findWhereIs(48.8381, 2.2805)\n.then((result) =  {\n    console.log(result)\n})  Will ouput:  { types: [ 'locality', 'political' ],\n  enPoliticalComponents:\n   { locality: 'Paris',\n     administrative_area_level_2: 'Paris',\n     administrative_area_level_1: '\u00cele-de-France',\n     country: 'France' },\n  name: 'Paris',\n  location: { lat: 48.856614, lng: 2.3522219 },\n  viewport:\n   { northeast: { lat: 48.9021449, lng: 2.4699208 },\n     southwest: { lat: 48.815573, lng: 2.224199 } },\n  searchSettings:\n   { coordinate: { lat: 48.856614, lng: 2.3522219 },\n     tag: null,\n     aroundPrecision: 5097.866542628929,\n     aroundRadius: 40782.93234103143 } }", 
             "title": "Usage"
         }, 
         {
@@ -29,6 +29,36 @@
             "location": "/#ci", 
             "text": "This project is using Travis. As such, maintainers should pay attention to provide\nthe API key set up with Travis machines IP addresses.", 
             "title": "CI"
+        }, 
+        {
+            "location": "/geocoder/", 
+            "text": "Geocoder\n\n\nHere are some explanations about the I/O of the module.\n\n\nInputs\n\n\nTwo inputs are accepted:\n\n\n\n\nCoordinate: the module returns information about the locality the coordinate are in\n\n\nGoogle Place ID: the module main focus is to return results regarding google places\n  with a \npolitical\n type.\n\n\n\n\nOutputs\n\n\n\n\n\n\n\n\nName\n\n\nDescription (relative to the Maps API response)\n\n\n\n\n\n\n\n\n\n\ntypes\n\n\nA copy of the type of the Maps API response\n\n\n\n\n\n\nenPolicitalComponents\n\n\nA summary of the \npolitical\n address components\n\n\n\n\n\n\nname\n\n\nThe name of the location\n\n\n\n\n\n\nlocation\n\n\nThe coordonate of the location\n\n\n\n\n\n\nviewport\n\n\nThe recommended viewport for the location\n\n\n\n\n\n\nsearchSettings\n\n\nRecommended values for searching around the location\n\n\n\n\n\n\nsearchSettings.coordinate\n\n\nThe coordonate around which you should search\n\n\n\n\n\n\nsearchSettings.tag\n\n\nThe tag you should search for\n\n\n\n\n\n\nsearchSettings.aroundPrecision\n\n\nThe distance in meters that seems to return the best results for the search (computed from the recommended viewport)\n\n\n\n\n\n\nsearchSettings.aroundRadius\n\n\nThe distance in meters where it seems you should stop returning results for the search (computed from the recommended viewport)", 
+            "title": "Geocoder"
+        }, 
+        {
+            "location": "/geocoder/#geocoder", 
+            "text": "Here are some explanations about the I/O of the module.", 
+            "title": "Geocoder"
+        }, 
+        {
+            "location": "/geocoder/#inputs", 
+            "text": "Two inputs are accepted:   Coordinate: the module returns information about the locality the coordinate are in  Google Place ID: the module main focus is to return results regarding google places\n  with a  political  type.", 
+            "title": "Inputs"
+        }, 
+        {
+            "location": "/geocoder/#outputs", 
+            "text": "Name  Description (relative to the Maps API response)      types  A copy of the type of the Maps API response    enPolicitalComponents  A summary of the  political  address components    name  The name of the location    location  The coordonate of the location    viewport  The recommended viewport for the location    searchSettings  Recommended values for searching around the location    searchSettings.coordinate  The coordonate around which you should search    searchSettings.tag  The tag you should search for    searchSettings.aroundPrecision  The distance in meters that seems to return the best results for the search (computed from the recommended viewport)    searchSettings.aroundRadius  The distance in meters where it seems you should stop returning results for the search (computed from the recommended viewport)", 
+            "title": "Outputs"
+        }, 
+        {
+            "location": "/haversine/", 
+            "text": "Haversine\n\n\nThis module needs to calculate distances between geographical points, so it is\nembedding a basic \nHaversine\n algorithm to do so.", 
+            "title": "Haversine"
+        }, 
+        {
+            "location": "/haversine/#haversine", 
+            "text": "This module needs to calculate distances between geographical points, so it is\nembedding a basic  Haversine  algorithm to do so.", 
+            "title": "Haversine"
         }
     ]
 }

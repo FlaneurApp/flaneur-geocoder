@@ -70,6 +70,16 @@
     </ul>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="geocoder/">Geocoder</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="haversine/">Haversine</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -108,11 +118,7 @@
 <a href="https://www.npmjs.com/package/flaneur-geocoder"><img alt="npm version" src="https://img.shields.io/npm/v/flaneur-geocoder.svg?style=flat-square" /></a></p>
 <h2 id="introduction">Introduction</h2>
 <p>This module intends to help developers using Google Maps and Google Places API
-to get consitent and complete geocoding returns.</p>
-<p>It merges <code>political</code> types address components fetched from the service from
-either coordinate or a Google Place ID. When a conflict occurs, a very basic
-policy is applied: the shortest name is returned.</p>
-<p>All results are returned in English when available.</p>
+to get consistent geocoding returns, with search-oriented information.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="javascript">const FlaneurGeocoder = require('flaneur-geocoder')
 const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
@@ -123,15 +129,22 @@ geocoder.findWhereIs(48.8381, 2.2805)
 </code></pre>
 
 <p>Will ouput:</p>
-<pre><code>{
-  locality: 'Paris',
-  administrative_area_level_2: 'Paris',
-  administrative_area_level_1: 'Île-de-France',
-  country: 'France',
-  neighborhood: 'Javel',
-  sublocality: '15th arrondissement of Paris',
-  sublocality_level_1: '15th arrondissement of Paris'
-}
+<pre><code>{ types: [ 'locality', 'political' ],
+  enPoliticalComponents:
+   { locality: 'Paris',
+     administrative_area_level_2: 'Paris',
+     administrative_area_level_1: 'Île-de-France',
+     country: 'France' },
+  name: 'Paris',
+  location: { lat: 48.856614, lng: 2.3522219 },
+  viewport:
+   { northeast: { lat: 48.9021449, lng: 2.4699208 },
+     southwest: { lat: 48.815573, lng: 2.224199 } },
+  searchSettings:
+   { coordinate: { lat: 48.856614, lng: 2.3522219 },
+     tag: null,
+     aroundPrecision: 5097.866542628929,
+     aroundRadius: 40782.93234103143 } }
 </code></pre>
 
 <h2 id="tests">Tests</h2>
@@ -144,6 +157,13 @@ the API key set up with Travis machines IP addresses.</p>
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="geocoder/" class="btn btn-neutral float-right" title="Geocoder">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
@@ -168,6 +188,8 @@ the API key set up with Travis machines IP addresses.</p>
       
       
       
+        <span style="margin-left: 15px"><a href="geocoder/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
     </span>
 </div>
     <script src="./js/theme.js"></script>
@@ -177,5 +199,5 @@ the API key set up with Travis machines IP addresses.</p>
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-08-30 11:50:49
+Build Date UTC : 2017-08-30 12:23:25
 -->
