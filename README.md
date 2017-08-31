@@ -46,6 +46,13 @@ Will ouput:
 As for regular usage, tests require a Google Places API Key. To run tests locally,
 please setup a `GOOGLE_PLACES_FLANEUR_API_KEY` environment variable with your API key.
 
+## Releasing
+
+    npm install
+    git tag vX.Y.Z
+    git push origin vX.Y.Z
+    npm publish
+
 ## CI
 
 This project is using Travis. As such, maintainers should pay attention to provide
