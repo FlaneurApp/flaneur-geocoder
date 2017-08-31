@@ -11,7 +11,7 @@ const FlaneurGeocoder = require('../lib/flaneur-geocoder')
 describe('FlaneurGeocoder', function() {
   describe('#findWhereIs', function() {
     it('should return a valid response with latitude/longitude', function(done) {
-      const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
+      const geocoder = new FlaneurGeocoder()
       geocoder.findWhereIs(48.8381, 2.2805)
       .then((result) => {
         result.enPoliticalComponents.locality.should.eq('Paris')
@@ -23,7 +23,7 @@ describe('FlaneurGeocoder', function() {
     })
 
     it('should return results in English', function(done) {
-      const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
+      const geocoder = new FlaneurGeocoder()
       geocoder.findWhereIs(41.3772, 2.1502)
       .then((result) => {
         result.enPoliticalComponents.locality.should.eq('Barcelona')
@@ -32,13 +32,41 @@ describe('FlaneurGeocoder', function() {
     })
 
     it('should return a valid response with a Google Place ID', function(done) {
-      const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY)
+      const geocoder = new FlaneurGeocoder()
       geocoder.findWhereIs('ChIJjaFImcB65kcRXCzvbEBQJN0')
       .then((result) => {
         result.enPoliticalComponents.locality.should.eq('Paris')
         result.enPoliticalComponents.administrative_area_level_2.should.eq('Paris')
         result.enPoliticalComponents.administrative_area_level_1.should.eq('Île-de-France')
         result.enPoliticalComponents.country.should.eq('France')
+      })
+      .should.notify(done)
+    })
+
+    it ('accepts a custom function to compute aroundRadius', function(done) {
+      const geocoder = new FlaneurGeocoder({
+        aroundRadiusFn: function(viewportDiagonal) {
+          return 4
+        }
+      })
+
+      geocoder.findWhereIs('ChIJjaFImcB65kcRXCzvbEBQJN0')
+      .then((result) => {
+        result.searchSettings.aroundRadius.should.eq(4)
+      })
+      .should.notify(done)
+    })
+
+    it ('accepts a custom function to compute aroundPrecision', function(done) {
+      const geocoder = new FlaneurGeocoder({
+        aroundPrecisionFn: function(viewportDiagonal) {
+          return 5
+        }
+      })
+
+      geocoder.findWhereIs('ChIJjaFImcB65kcRXCzvbEBQJN0')
+      .then((result) => {
+        result.searchSettings.aroundPrecision.should.eq(5)
       })
       .should.notify(done)
     })

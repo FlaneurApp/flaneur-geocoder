@@ -61,9 +61,11 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#inputs">Inputs</a></li>
+            <li><a class="toctree-l3" href="#constructor">Constructor</a></li>
         
-            <li><a class="toctree-l3" href="#outputs">Outputs</a></li>
+            <li><a class="toctree-l3" href="#findwhereis-inputs">findWhereIs' Inputs</a></li>
+        
+            <li><a class="toctree-l3" href="#findwhereis-outputs">findWhereIs' Outputs</a></li>
         
         </ul>
     
@@ -110,14 +112,42 @@
               
                 <h1 id="geocoder">Geocoder</h1>
 <p>Here are some explanations about the I/O of the module.</p>
-<h2 id="inputs">Inputs</h2>
+<h2 id="constructor">Constructor</h2>
+<p>The constructor can use the following options:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>The Google Places API Key for your project. It can also be set via a <code>GOOGLE_PLACES_FLANEUR_API_KEY</code> environment variable.</td>
+</tr>
+<tr>
+<td>verbose</td>
+<td>If set to <code>true</code>, it will output messages to the console. <code>false</code> by default.</td>
+</tr>
+<tr>
+<td>aroundRadiusFn</td>
+<td>The function returning the final <code>aroundRadius</code> value, with the location viewport diagonal size (in m). The default multiplies it by 2.</td>
+</tr>
+<tr>
+<td>aroundPrecisionFn</td>
+<td>The function returning the final <code>aroundPrecision</code> value, with the location viewport diagonal size (in m). The default divides it by 4.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="findwhereis-inputs">findWhereIs' Inputs</h2>
 <p>Two inputs are accepted:</p>
 <ul>
 <li>Coordinate: the module returns information about the locality the coordinate are in</li>
 <li>Google Place ID: the module main focus is to return results regarding google places
   with a <code>political</code> type.</li>
 </ul>
-<h2 id="outputs">Outputs</h2>
+<h2 id="findwhereis-outputs">findWhereIs' Outputs</h2>
 <table>
 <thead>
 <tr>
@@ -141,6 +171,10 @@
 <tr>
 <td><code>location</code></td>
 <td>The coordonate of the location</td>
+</tr>
+<tr>
+<td><code>placeID</code></td>
+<td>The GooglePlace ID of the location</td>
 </tr>
 <tr>
 <td><code>viewport</code></td>

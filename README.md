@@ -13,7 +13,7 @@ to get consistent geocoding returns, with search-oriented information.
 
 ```javascript
 const FlaneurGeocoder = require('flaneur-geocoder')
-const geocoder = new FlaneurGeocoder(myGooglePlacesAPIKey)
+const geocoder = new FlaneurGeocoder({ apiKey: ... })
 geocoder.findWhereIs(48.8381, 2.2805)
 .then((result) => {
     console.log(result)

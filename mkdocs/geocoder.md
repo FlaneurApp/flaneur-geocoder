@@ -2,7 +2,18 @@
 
 Here are some explanations about the I/O of the module.
 
-## Inputs
+## Constructor
+
+The constructor can use the following options:
+
+| Name | Description |
+|------|-------------|
+| apiKey | The Google Places API Key for your project. It can also be set via a `GOOGLE_PLACES_FLANEUR_API_KEY` environment variable. |
+| verbose | If set to `true`, it will output messages to the console. `false` by default. |
+| aroundRadiusFn | The function returning the final `aroundRadius` value, with the location viewport diagonal size (in m). The default multiplies it by 2. |
+| aroundPrecisionFn | The function returning the final `aroundPrecision` value, with the location viewport diagonal size (in m). The default divides it by 4. |
+
+## findWhereIs' Inputs
 
 Two inputs are accepted:
 
@@ -10,7 +21,7 @@ Two inputs are accepted:
 * Google Place ID: the module main focus is to return results regarding google places
   with a `political` type.
 
-## Outputs
+## findWhereIs' Outputs
 
 | Name | Description (relative to the Maps API response) |
 |----|-----|

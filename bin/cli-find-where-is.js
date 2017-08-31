@@ -28,14 +28,14 @@ const seattleCoord =   { latitude: 47.6062095,  longitude: -122.3320708 }
 // Places
 const brestTourDuMonde = 'ChIJo7G3fCC6FkgROZBxeqhK1T0'
 
-const geocoder = new FlaneurGeocoder(process.env.GOOGLE_PLACES_FLANEUR_API_KEY, true)
+const geocoder = new FlaneurGeocoder()
 geocoder.findWhereIs(lisbon)
 .then((result) => {
   console.log(result)
 
   console.log('\n # Useful Links:')
-  console.log(`* NE: ${geocoder._mapsCenteredOnLocation(result.viewport.northeast.lat, result.viewport.northeast.lng)}`)
-  console.log(`* SW: ${geocoder._mapsCenteredOnLocation(result.viewport.southwest.lat, result.viewport.southwest.lng)}`)
+  console.log(`* NE: ${FlaneurGeocoder._mapsCenteredOnLocation(result.viewport.northeast.lat, result.viewport.northeast.lng)}`)
+  console.log(`* SW: ${FlaneurGeocoder._mapsCenteredOnLocation(result.viewport.southwest.lat, result.viewport.southwest.lng)}`)
 })
 .catch((e) => {
   console.error(e)
