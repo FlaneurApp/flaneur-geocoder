@@ -35,6 +35,17 @@ describe('FlaneurGeocoder', function() {
       .should.notify(done)
     })
 
+    it('should convert string coordinate queries to numbers', function(done) {
+      const geocoder = new FlaneurGeocoder()
+      geocoder.findWhereIs("48.8381", "2.2805")
+      .then((result) => {
+        // The inputs arguments should be returned as Numbers
+        result.query.lat.should.eq(48.8381)
+        result.query.lng.should.eq(2.2805)
+      })
+      .should.notify(done)
+    })
+
     it('should return a valid response with a Google Place ID', function(done) {
       const geocoder = new FlaneurGeocoder()
       geocoder.findWhereIs('ChIJjaFImcB65kcRXCzvbEBQJN0')
