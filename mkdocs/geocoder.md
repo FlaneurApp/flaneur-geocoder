@@ -36,3 +36,4 @@ Two inputs are accepted:
 | `searchSettings.tag` | The tag you should search for |
 | `searchSettings.aroundPrecision` | The distance in meters that seems to return the best results for the search (computed from the recommended viewport) |
 | `searchSettings.aroundRadius` | The distance in meters where it seems you should stop returning results for the search (computed from the recommended viewport) |
+| `query` | The queried arguments, ie either coordinates or a place ID |

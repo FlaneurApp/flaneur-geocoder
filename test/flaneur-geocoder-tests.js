@@ -18,6 +18,10 @@ describe('FlaneurGeocoder', function() {
         result.enPoliticalComponents.administrative_area_level_2.should.eq('Paris')
         result.enPoliticalComponents.administrative_area_level_1.should.eq('Île-de-France')
         result.enPoliticalComponents.country.should.eq('France')
+
+        // The inputs arguments should be also returned in the result
+        result.query.lat.should.eq(48.8381)
+        result.query.lng.should.eq(2.2805)
       })
       .should.notify(done)
     })
@@ -39,6 +43,9 @@ describe('FlaneurGeocoder', function() {
         result.enPoliticalComponents.administrative_area_level_2.should.eq('Paris')
         result.enPoliticalComponents.administrative_area_level_1.should.eq('Île-de-France')
         result.enPoliticalComponents.country.should.eq('France')
+
+        // The inputs arguments should be also returned in the result
+        result.query.placeID.should.eq('ChIJjaFImcB65kcRXCzvbEBQJN0')
       })
       .should.notify(done)
     })

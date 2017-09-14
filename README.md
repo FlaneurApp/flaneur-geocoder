@@ -38,7 +38,8 @@ Will ouput:
    { coordinate: { lat: 48.856614, lng: 2.3522219 },
      tag: null,
      aroundPrecision: 5097.866542628929,
-     aroundRadius: 40782.93234103143 } }
+     aroundRadius: 40782.93234103143 },
+  query: { lat: 48.8381, lng: 2.2805 } }
 ```
 
 ## Tests
@@ -48,6 +49,7 @@ please setup a `GOOGLE_PLACES_FLANEUR_API_KEY` environment variable with your AP
 
 ## Releasing
 
+    # Update the version number in `package.json`
     npm install
     git tag vX.Y.Z
     git push origin vX.Y.Z
