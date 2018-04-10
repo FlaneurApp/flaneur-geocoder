@@ -108,4 +108,91 @@ describe('FlaneurGeocoder', function () {
         .should.notify(done)
     })
   })
+
+  describe('#findWhereIsAddress', function () {
+    it('should throw an error with no argument', function () {
+      const geocoder = new FlaneurGeocoder()
+      return geocoder.findWhereIsAddress().should.be.rejectedWith('Invalid args')
+    })
+
+    it('should find the address', function () {
+      const geocoder = new FlaneurGeocoder()
+      const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
+      const expectedResult = {
+        types: ['street_address'],
+        enPoliticalComponents: {
+          locality: 'Idaho Falls',
+          administrative_area_level_2: 'Bonneville County',
+          administrative_area_level_1: 'Idaho',
+          country: 'United States',
+        },
+        placeID: 'EiYxOTkgRWxtIFN0LCBJZGFobyBGYWxscywgSUQgODM0MDIsIFVTQQ',
+        name: 'Idaho Falls',
+        location: { lat: 43.489884, lng: -112.0374838 },
+        viewport: {
+          northeast: { lat: 43.4912329802915, lng: -112.0361348197085 },
+          southwest: { lat: 43.4885350197085, lng: -112.0388327802915 },
+        },
+        searchSettings: {
+          coordinate: { lat: 43.489884, lng: -112.0374838 },
+          tag: null,
+          aroundPrecision: 92.65883491616987,
+          aroundRadius: 741.2706793293589,
+        },
+        query: { address: '101-199 Elm St, Idaho Falls, ID 83402, USA' },
+      }
+
+      return geocoder.findWhereIsAddress(address)
+        .then(results => results.should.deep.equal(expectedResult))
+    })
+
+    it('should reject if there isn\'t a result with the locality type with the withLocalityOnly option', function () {
+      const geocoder = new FlaneurGeocoder()
+      const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
+
+      return geocoder.findWhereIsAddress(address, { withLocalityOnly: true }).should.be.rejectedWith('Couldn\'t find locality')
+    })
+
+    it('Should return the formatted address with the includeFormattedAddress option', function () {
+      const geocoder = new FlaneurGeocoder()
+      const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
+
+      return geocoder.findWhereIsAddress(address, { includeFormattedAddress: true })
+        .then(results => results.should.have.property('formatted_address', '199 Elm St, Idaho Falls, ID 83402, USA'))
+    })
+
+    it('Should translate the address with the language option', function () {
+      const geocoder = new FlaneurGeocoder()
+      const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
+
+      return geocoder.findWhereIsAddress(address, { includeFormattedAddress: true, language: 'fr' })
+        .then(results => results.should.have.property('formatted_address', '199 Elm St, Idaho Falls, ID 83402, États-Unis'))
+    })
+  })
+
+  describe('#_findFromCoordinate', function () {
+    it('should reject if there isn\'t a result with the locality type with the withLocalityOnly option', function () {
+      const geocoder = new FlaneurGeocoder()
+      return geocoder._findFromCoordinate(48.3951666667, -4.428, true).should.be.rejectedWith(Error)
+    })
+
+    it('should succeed even if there isn\'t a result with the locality type without the withLocalityOnly option ', function () {
+      const geocoder = new FlaneurGeocoder()
+      return geocoder._findFromCoordinate(48.3951666667, -4.428, false)
+        .then((result) => {
+          result.should.deep.include({
+            enPoliticalComponents: {
+              locality: 'Guipavas',
+              administrative_area_level_2: 'Finistère',
+              administrative_area_level_1: 'Bretagne',
+              country: 'France',
+            },
+            placeID: 'Eig2IFJ1ZSBkZSBQYWxhcmVuLCAyOTQ5MCBHdWlwYXZhcywgRnJhbmNl',
+            name: 'Guipavas',
+            query: { lat: 48.3951666667, lng: -4.428 },
+          })
+          return true
+        }).should.eventually.be.true
+    })
+  })
 })
