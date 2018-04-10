@@ -153,11 +153,11 @@ describe('FlaneurGeocoder', function () {
       return geocoder.findWhereIsAddress(address, { withLocalityOnly: true }).should.be.rejectedWith('Couldn\'t find locality')
     })
 
-    it('Should return the formatted address with the includeFormattedAddress option', function () {
+    it('Should return the formatted address with the withFormattedAddress option', function () {
       const geocoder = new FlaneurGeocoder()
       const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
 
-      return geocoder.findWhereIsAddress(address, { includeFormattedAddress: true })
+      return geocoder.findWhereIsAddress(address, { withFormattedAddress: true })
         .then(results => results.should.have.property('formatted_address', '199 Elm St, Idaho Falls, ID 83402, USA'))
     })
 
@@ -165,7 +165,7 @@ describe('FlaneurGeocoder', function () {
       const geocoder = new FlaneurGeocoder()
       const address = '101-199 Elm St, Idaho Falls, ID 83402, USA'
 
-      return geocoder.findWhereIsAddress(address, { includeFormattedAddress: true, language: 'fr' })
+      return geocoder.findWhereIsAddress(address, { withFormattedAddress: true, language: 'fr' })
         .then(results => results.should.have.property('formatted_address', '199 Elm St, Idaho Falls, ID 83402, États-Unis'))
     })
   })
