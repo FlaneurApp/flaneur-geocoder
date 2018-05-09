@@ -1,6 +1,6 @@
 {
   "name": "flaneur-geocoder",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "Node geocoder, relying on coordinate and Google Places ID to fetch where a location is, via Google Maps",
   "main": "index.js",
   "scripts": {
