@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2018-05-09
+
+### Changed
+* Reworked the code for a more flexible location retrieval. The old behaviour, e.g.returning
+  geocoded location only if the Google response includes the `locality` type, is still the default
+  but can be bypassed by setting the `withLocalityOnly` option to `false` in the
+  `_findFromCoordinate` function.
+* Added the `withFormattedAddress` to `_findFromCoordinate` to include the formatted address in the
+  response
+
+### Added
+* Added the `findWhereIsAddress` function, allowing the geocode from an address.
+
 ## [2.2.4] - 2017-09-14
 
 ### Changed
